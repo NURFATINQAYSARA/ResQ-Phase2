@@ -7,7 +7,7 @@ namespace ResQ
     // Do not change the tables without telling Nurfatin. If the tables change, raise SchemaVersion by 1:
     // the app then rebuilds the database by itself, so nobody has to delete resq.db by hand.
     // The file resq.db is made in the bin folder the first time the app runs. Git ignores it.
-    internal static class Database
+    internal static partial class Database
     {
         private const int SchemaVersion = 1;
         private static readonly string DbPath = Path.Combine(AppContext.BaseDirectory, "resq.db");

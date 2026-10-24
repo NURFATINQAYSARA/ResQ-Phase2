@@ -20,8 +20,6 @@ namespace ResQ
             ClientSize = new Size(1100, 700);
             StartPosition = FormStartPosition.CenterScreen;
             BackColor = Theme.Background;
-            Font = Theme.FontBody;
-
             pnlSide.BackColor = Theme.SidebarColor(Session.Role);
             pnlBody.BackColor = Theme.Background;
 

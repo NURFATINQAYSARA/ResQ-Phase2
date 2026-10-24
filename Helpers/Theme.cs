@@ -24,6 +24,7 @@ namespace ResQ
         public static readonly Color Muted = Color.FromArgb(0x3D, 0x44, 0x68);
         public static readonly Color Border = Color.FromArgb(0xC9, 0xCD, 0xDF);
         public static readonly Color CardBorder = Color.FromArgb(0xE1, 0xE4, 0xEF);
+        public static readonly Color RowAlt = Color.FromArgb(0xF7, 0xF8, 0xFC);
 
         // Fonts.
         public static readonly Font FontBody = new("Segoe UI", 10F);
@@ -61,6 +62,47 @@ namespace ResQ
             b.Font = FontBold;
             b.Cursor = Cursors.Hand;
             if (b.Height < 38) b.Height = 38;
+        }
+
+        // Style a textbox / combobox the same way across the app.
+        public static void StyleInput(Control input)
+        {
+            input.Font = FontBody;
+            input.ForeColor = Ink;
+            input.BackColor = Surface;
+            if (input is TextBox tb)
+            {
+                tb.BorderStyle = BorderStyle.FixedSingle;
+                if (tb.Height < 30) tb.Height = 30;
+            }
+        }
+
+        // Style a DataGridView the same way across the app.
+        public static void StyleGrid(DataGridView g)
+        {
+            g.BackgroundColor = Surface;
+            g.BorderStyle = BorderStyle.None;
+            g.GridColor = CardBorder;
+            g.EnableHeadersVisualStyles = false;
+            g.ColumnHeadersDefaultCellStyle.BackColor = RowAlt;
+            g.ColumnHeadersDefaultCellStyle.ForeColor = Ink;
+            g.ColumnHeadersDefaultCellStyle.Font = FontBold;
+            g.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            g.ColumnHeadersHeight = 36;
+            g.DefaultCellStyle.Font = FontBody;
+            g.DefaultCellStyle.ForeColor = Ink;
+            g.DefaultCellStyle.BackColor = Surface;
+            g.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0xE4, 0xE8, 0xF5);
+            g.DefaultCellStyle.SelectionForeColor = Ink;
+            g.AlternatingRowsDefaultCellStyle.BackColor = RowAlt;
+            g.RowHeadersVisible = false;
+            g.AllowUserToAddRows = false;
+            g.AllowUserToDeleteRows = false;
+            g.ReadOnly = true;
+            g.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            g.MultiSelect = false;
+            g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            g.RowTemplate.Height = 32;
         }
 
         // ---------- small building blocks ----------
@@ -115,6 +157,36 @@ namespace ResQ
             };
             panel.Resize += (s, e) => panel.Invalidate();
             return panel;
+        }
+
+        // A big coloured number-tile for Admin Home / Request Monitor summary rows.
+        public static Panel StatTile(string label, string value, Color accent)
+        {
+            var card = Card();
+            card.Height = 90;
+            card.Width = 180;
+
+            var lblValue = new Label
+            {
+                Text = value,
+                Font = new Font("Segoe UI", 22F, FontStyle.Bold),
+                ForeColor = accent,
+                AutoSize = true,
+                Location = new Point(16, 10),
+                BackColor = Color.Transparent
+            };
+            var lblCaption = new Label
+            {
+                Text = label,
+                Font = FontBody,
+                ForeColor = Muted,
+                AutoSize = true,
+                Location = new Point(16, 54),
+                BackColor = Color.Transparent
+            };
+            card.Controls.Add(lblValue);
+            card.Controls.Add(lblCaption);
+            return card;
         }
 
         // ---------- colours for words ----------

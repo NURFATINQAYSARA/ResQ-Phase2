@@ -4,7 +4,7 @@ namespace ResQ
 {
     // All input checks live here so every screen uses the same rules.
     // Each Validate method returns null when everything is fine, otherwise the message to show.
-    internal static class Validator
+    internal static partial class Validator
     {
         public static bool IsBlank(string? text) => string.IsNullOrWhiteSpace(text);
 
