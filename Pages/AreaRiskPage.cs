@@ -119,6 +119,11 @@ namespace ResQ.Pages
             riskContainer.Controls.Add(CreateRiskCard("Bandar Utara", "LOW", "No hazards reported.", "yesterday", false));
         }
 
+        private void InitializeComponent()
+        {
+
+        }
+
         private Panel CreateRiskCard(string area, string riskLevel, string notes, string lastUpdated, bool isUserArea = false)
         {
             Panel card = new Panel()
