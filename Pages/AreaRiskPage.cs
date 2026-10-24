@@ -119,19 +119,6 @@ namespace ResQ.Pages
             riskContainer.Controls.Add(CreateRiskCard("Bandar Utara", "LOW", "No hazards reported.", "yesterday", false));
         }
 
-        private void InitializeComponent()
-        {
-            SuspendLayout();
-            // 
-            // AreaRiskPage
-            // 
-            Name = "AreaRiskPage";
-            Size = new Size(1126, 557);
-            Load += AreaRiskPage_Load;
-            ResumeLayout(false);
-
-        }
-
         private Panel CreateRiskCard(string area, string riskLevel, string notes, string lastUpdated, bool isUserArea = false)
         {
             Panel card = new Panel()
@@ -182,11 +169,6 @@ namespace ResQ.Pages
             card.Controls.Add(lblRisk);
 
             return card;
-        }
-
-        private void AreaRiskPage_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
