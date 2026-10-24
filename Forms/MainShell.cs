@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using ResQ.Pages;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ResQ
@@ -149,6 +150,13 @@ namespace ResQ
             note.Location = new Point(24, 70);
             page.Controls.Add(note);
             pnlBody.Controls.Add(page);
+        }
+        private void btnAreaRisk_Click(object sender, EventArgs e)
+        {
+            pnlBody.Controls.Clear();
+            var areaRiskPage = new AreaRiskPage();
+            pnlBody.Controls.Add(areaRiskPage);
+            areaRiskPage.Dock = DockStyle.Fill;
         }
     }
 }
