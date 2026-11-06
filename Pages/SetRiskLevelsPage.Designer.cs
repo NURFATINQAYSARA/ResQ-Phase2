@@ -38,7 +38,7 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            lblTitle.Location = new Point(24, 24);
+            lblTitle.Location = new Point(20, 0);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(278, 54);
             lblTitle.TabIndex = 0;
@@ -46,20 +46,20 @@
             // 
             // lblSubtitle
             // 
-            lblSubtitle.AutoSize = true;
+            lblSubtitle.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblSubtitle.ForeColor = Color.Gray;
-            lblSubtitle.Location = new Point(28, 72);
+            lblSubtitle.Location = new Point(24, 72);
             lblSubtitle.Name = "lblSubtitle";
-            lblSubtitle.Size = new Size(871, 28);
+            lblSubtitle.Size = new Size(1078, 48);
             lblSubtitle.TabIndex = 1;
-            lblSubtitle.Text = "Pick the current risk level for each area. Residents and volunteers will see the new level immediately.";
+            lblSubtitle.Text = "Choose Low, Medium or High for each area. Click Save to apply changes.\n";
             // 
             // btnRefresh
             // 
             btnRefresh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRefresh.Location = new Point(680, 32);
+            btnRefresh.Location = new Point(986, 24);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(100, 36);
+            btnRefresh.Size = new Size(116, 38);
             btnRefresh.TabIndex = 2;
             btnRefresh.Text = "Refresh";
             btnRefresh.UseVisualStyleBackColor = true;
@@ -70,9 +70,9 @@
             flowAreas.AutoScroll = true;
             flowAreas.BackColor = Color.Transparent;
             flowAreas.FlowDirection = FlowDirection.TopDown;
-            flowAreas.Location = new Point(24, 110);
+            flowAreas.Location = new Point(24, 132);
             flowAreas.Name = "flowAreas";
-            flowAreas.Size = new Size(770, 410);
+            flowAreas.Size = new Size(1078, 328);
             flowAreas.TabIndex = 3;
             flowAreas.WrapContents = false;
             // 
@@ -86,7 +86,9 @@
             Controls.Add(lblTitle);
             Location = new Point(24, 110);
             Name = "SetRiskLevelsPage";
-            Size = new Size(1126, 820);
+            Padding = new Padding(0);
+            Size = new Size(1126, 484);
+            Load += SetRiskLevelsPage_Load;
             ResumeLayout(false);
             PerformLayout();
         }
