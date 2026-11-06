@@ -167,6 +167,9 @@ namespace ResQ
 
         private void btnAreaRisk_Click(object sender, EventArgs e)
         {
+            AreaRiskPage myPage = new AreaRiskPage();
+            myPage.Show();
+
             pnlBody.Controls.Clear();
             var directoryPage = new DirectoryPage();
             directoryPage.Dock = DockStyle.Fill; // <--- Forces it to stretch

@@ -16,6 +16,7 @@ namespace ResQ.Pages
             InitializeComponent();
 
             WalkthroughUi.Setup(this, ["Resident", "Volunteer", "Admin"]);
+
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
