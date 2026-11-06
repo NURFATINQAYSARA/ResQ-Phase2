@@ -86,7 +86,7 @@
             lblStatus.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblStatus.AutoEllipsis = true;
             lblStatus.ForeColor = Color.FromArgb(20, 26, 70);
-            lblStatus.Location = new Point(24, 558);
+            lblStatus.Location = new Point(24, 566);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(1118, 30);
             lblStatus.TabIndex = 3;
