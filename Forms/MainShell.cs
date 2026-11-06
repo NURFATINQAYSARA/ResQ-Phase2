@@ -1,11 +1,8 @@
 ﻿using ResQ.Pages;
-using System.Drawing;
-using System.Windows.Forms;
-
+using System.Reflection;
 namespace ResQ
 {
-    // OWNER: Nurfatin. The main window after login.
-    // The side menu is built from the role, so each role sees only its own buttons.
+    // OWNER: Nurfatin. Keeps one sidebar and loads the installed role pages.
     public class MainShell : Form
     {
         private readonly Panel pnlSide = new() { Dock = DockStyle.Left, Width = 220 };
@@ -13,148 +10,138 @@ namespace ResQ
         private readonly Panel pnlBody = new() { Dock = DockStyle.Fill };
         private readonly Label lblRole = new() { AutoSize = true };
         private readonly Label lblWho = new() { AutoSize = true };
-
         public MainShell()
         {
-            Text = "ResQ";
-            ClientSize = new Size(1100, 700);
+            Text = "ResQ - simulation only";
+            ClientSize = new Size(1140, 720);
+            MinimumSize = new Size(1000, 620);
             StartPosition = FormStartPosition.CenterScreen;
             BackColor = Theme.Background;
             pnlSide.BackColor = Theme.SidebarColor(Session.Role);
             pnlBody.BackColor = Theme.Background;
-
             BuildSide();
-
             lblRole.Text = Session.Role.ToUpperInvariant();
             lblRole.Font = Theme.FontPill;
             lblRole.ForeColor = Theme.AccentColor(Session.Role);
-
-            lblWho.Text = Session.FullName + "  ·  " + Session.Area;
+            lblWho.Text = Session.FullName + " | " + Session.Area;
             lblWho.Font = Theme.FontBold;
             lblWho.ForeColor = Theme.Ink;
-
+            lblRole.Location = new Point(20, 10);
+            lblWho.Location = new Point(20, 30);
             pnlHeader.BackColor = Theme.Surface;
-            pnlHeader.Padding = new Padding(20, 12, 20, 12);
             pnlHeader.Controls.Add(lblWho);
             pnlHeader.Controls.Add(lblRole);
-
-            // Stack the two header labels on the left.
-            pnlHeader.Resize += (s, e) =>
-            {
-                lblRole.Location = new Point(20, 10);
-                lblWho.Location = new Point(20, 30);
-            };
-
             Controls.Add(pnlBody);
             Controls.Add(pnlHeader);
             Controls.Add(pnlSide);
+            Shown += (_, _) => Navigate(Session.Role == "Volunteer" ? "Request Feed" : "Home");
         }
-
-        private void BuildSide()
-        {
-            var brand = new Label
-            {
-                Text = "ResQ",
-                Font = new Font("Segoe UI", 22F, FontStyle.Bold),
-                ForeColor = Color.White,
-                AutoSize = true,
-                Location = new Point(18, 20)
-            };
-            pnlSide.Controls.Add(brand);
-
-            int y = 90;
-            foreach (string label in MenuLabels())
-                AddMenu(label, ref y);
-
-            AddLogout(ref y);
-        }
-
         private string[] MenuLabels() => Session.Role switch
         {
-            "Resident" => new[]
-            {
-                "Home", "Submit Request", "My Requests",
-                "Area Risk", "Report Incident", "Shelters and Contacts"
-            },
-            "Volunteer" => new[]
-            {
-                "Request Feed", "Update Status",
-                "Area Risk", "Shelters and Contacts"
-            },
-            "Admin" => new[]
-            {
-                "Home", "Request Monitor", "Set Risk Levels",
-                "Review Incidents", "Manage Directory", "Safety Log and Report"
-            },
-            _ => new[] { "Home" }
+            "Resident" => ["Home", "Submit Request", "My Requests", "Area Risk",
+ "Report Incident", "Shelters and Contacts"],
+            "Volunteer" => ["Request Feed", "Update Status", "Area Risk",
+ "Shelters and Contacts"],
+            "Admin" => ["Home", "Request Monitor", "Set Risk Levels", "Review Incidents",
+ "Manage Directory", "Safety Log and Report"],
+            _ => []
         };
-
-        private void AddMenu(string label, ref int y)
+        private void BuildSide()
         {
-            var b = new Button
+            pnlSide.Controls.Add(new Label
             {
-                Text = label,
-                Width = pnlSide.Width - 24,
-                Height = 40,
-                Left = 12,
-                Top = y,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Padding = new Padding(12, 0, 0, 0),
-                FlatStyle = FlatStyle.Flat,
-                BackColor = pnlSide.BackColor,
+                Text = "ResQ",
+                AutoSize = true,
+                Font = new Font("Segoe UI", 22, FontStyle.Bold),
                 ForeColor = Color.White,
-                Font = Theme.FontBold,
-                Cursor = Cursors.Hand
-            };
-            b.FlatAppearance.BorderSize = 0;
-            b.FlatAppearance.MouseOverBackColor = Color.FromArgb(40, 255, 255, 255);
-            b.Click += (s, e) => ShowPlaceholder(label);
-            pnlSide.Controls.Add(b);
-            y += 44;
-        }
-
-        private void AddLogout(ref int y)
-        {
-            var b = new Button
+                Location = new Point(18, 20)
+            });
+            int y = 90;
+            foreach (string label in MenuLabels())
+            {
+                string destination = label;
+                var button = new Button
+                {
+                    Text = label,
+                    Left = 12,
+                    Top = y,
+                    Width = 196,
+                    Height = 42,
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = pnlSide.BackColor,
+                    ForeColor = Color.White,
+                    Font = Theme.FontBold,
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    Padding = new Padding(10, 0, 0, 0)
+                };
+                button.FlatAppearance.BorderSize = 0;
+                button.Click += (_, _) => Navigate(destination);
+                pnlSide.Controls.Add(button);
+                y += 46;
+            }
+            var logout = new Button
             {
                 Text = "Log out",
-                Width = pnlSide.Width - 24,
-                Height = 40,
-                Left = 12,
-                Top = pnlSide.Height - 60,
-                Anchor = AnchorStyles.Left | AnchorStyles.Bottom,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Padding = new Padding(12, 0, 0, 0),
-                FlatStyle = FlatStyle.Flat,
+                Dock = DockStyle.Bottom,
+                Height = 45,
                 BackColor = pnlSide.BackColor,
                 ForeColor = Color.White,
-                Font = Theme.FontBold,
-                Cursor = Cursors.Hand
+                FlatStyle = FlatStyle.Flat,
+                Font = Theme.FontBold
             };
-            b.FlatAppearance.BorderSize = 0;
-            b.Click += (s, e) => Close();
-            pnlSide.Controls.Add(b);
+            logout.Click += (_, _) => { Session.End(); Close(); };
+            pnlSide.Controls.Add(logout);
         }
-
-        // Temporary page: teammates replace each menu item with their real page.
-        private void ShowPlaceholder(string label)
+        private void Navigate(string label)
         {
-            pnlBody.Controls.Clear();
-            var page = new PageBase();
-            var title = Theme.Title(label);
-            title.Location = new Point(24, 24);
-            page.Controls.Add(title);
-            var note = Theme.Subtitle("This screen is built by the modules assigned to each role.");
-            note.Location = new Point(24, 70);
-            page.Controls.Add(note);
-            pnlBody.Controls.Add(page);
-        }
-        private void btnAreaRisk_Click(object sender, EventArgs e)
-        {
-            pnlBody.Controls.Clear();
-            var areaRiskPage = new AreaRiskPage();
-            pnlBody.Controls.Add(areaRiskPage);
-            areaRiskPage.Dock = DockStyle.Fill;
+            // Only menu destinations for the current role are accepted.
+            if (!MenuLabels().Contains(label)) return;
+            string? name = label switch
+            {
+            "Home" => Session.Role == "Admin" ? "AdminHomePage" : "ResidentHomePage",
+            "Submit Request" => "SubmitRequestPage",
+            "My Requests" => "MyRequestsPage",
+            "Request Feed" => "RequestFeedPage",
+                "Update Status" => "UpdateStatusPage",
+                "Area Risk" => "AreaRiskPage",
+                "Report Incident" => "ReportIncidentPage",
+                "Shelters and Contacts" => "DirectoryPage",
+                "Request Monitor" => "RequestMonitorPage",
+                "Set Risk Levels" => "SetRiskLevelsPage",
+                "Review Incidents" => "ReviewIncidentsPage",
+                "Manage Directory" => "ManageDirectoryPage",
+                "Safety Log and Report" => "SafetyLogPage",
+                _ => null
+            };
+            PageBase? page = null;
+            try
+            {
+                Type? type = typeof(MainShell).Assembly.GetType("ResQ.Pages." + name);
+                if (type == null)
+                {
+                    MessageBox.Show(label + " has not been added yet. " +
+                    "Merge its owner's page before using this menu.", "ResQ");
+                    return;
+                }
+                if (!typeof(PageBase).IsAssignableFrom(type))
+                    throw new InvalidOperationException("Page must inherit PageBase.");
+                page = (PageBase)Activator.CreateInstance(type)!;
+                if (page is IFatinWalkthroughNavigation links)
+                    links.NavigationRequested += Navigate;
+                foreach (Control old in pnlBody.Controls.Cast<Control>().ToArray()) old.Dispose();
+                pnlBody.Controls.Clear();
+                page.Dock = DockStyle.Fill;
+                pnlBody.Controls.Add(page);
+                page.LoadData();
+            }
+            catch (Exception ex) when (ex is TargetInvocationException or
+            InvalidOperationException or ArgumentException or UnauthorizedAccessException or
+            Microsoft.Data.Sqlite.SqliteException)
+            {
+                if (page != null && !pnlBody.Controls.Contains(page)) page.Dispose();
+                MessageBox.Show("Could not open this page. Check its build and database setup.",
+                "ResQ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
