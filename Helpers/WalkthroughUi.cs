@@ -212,20 +212,4 @@ namespace ResQ
     }
 
     // Extension/fallback definitions for Theme class to resolve missing references
-    public static partial class Theme
-    {
-        public static Color RowAlt => Color.FromArgb(240, 241, 245);
-
-        public static void StyleGrid(DataGridView g)
-        {
-            g.BackgroundColor = Color.White;
-            g.BorderStyle = BorderStyle.None;
-            g.RowHeadersVisible = false;
-            g.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            g.MultiSelect = false;
-            g.AllowUserToAddRows = false;
-            g.AllowUserToDeleteRows = false;
-            g.ReadOnly = true;
-        }
-    }
 }

@@ -15,7 +15,7 @@ namespace ResQ.Pages
         public DirectoryPage()
         {
             InitializeComponent();
-
+            this.Dock = DockStyle.Fill;
             WalkthroughUi.Setup(this, ["Resident", "Volunteer", "Admin"]);
         }
 

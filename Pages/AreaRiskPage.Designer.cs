@@ -73,15 +73,14 @@
             lblSubtitle.BackColor = Color.FromArgb(241, 242, 248);
             lblSubtitle.Font = new Font("Segoe UI", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSubtitle.ForeColor = Color.FromArgb(20, 26, 70);
-            lblSubtitle.Location = new Point(24, 132);
+            lblSubtitle.Location = new Point(24, -48);
             lblSubtitle.Name = "lblSubtitle";
-            lblSubtitle.Size = new Size(852, 40);
+            lblSubtitle.Size = new Size(0, 40);
             lblSubtitle.TabIndex = 1;
             lblSubtitle.Text = "Latest levels set by the administrator. Shown by the colour and by text.";
             // 
             // lblStatus
             // 
-            lblStatus.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblStatus.AutoEllipsis = true;
             lblStatus.BackColor = Color.FromArgb(241, 242, 248);
             lblStatus.ForeColor = Color.FromArgb(20, 26, 70);
@@ -140,9 +139,9 @@
             // 
             lblAreaName.Font = new Font("Segoe UI", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAreaName.ForeColor = Color.FromArgb(20, 26, 70);
-            lblAreaName.Location = new Point(24, 0);
+            lblAreaName.Location = new Point(24, -1);
             lblAreaName.Name = "lblAreaName";
-            lblAreaName.Size = new Size(580, 38);
+            lblAreaName.Size = new Size(580, 39);
             lblAreaName.TabIndex = 1;
             lblAreaName.Text = "Area name (your area)";
             // 
@@ -167,7 +166,7 @@
             ForeColor = Color.Black;
             Name = "AreaRiskPage";
             Padding = new Padding(0);
-            Size = new Size(1783, 873);
+            Size = new Size(981, 693);
             flowRisks.ResumeLayout(false);
             pnlRiskTemplate.ResumeLayout(false);
             ResumeLayout(false);

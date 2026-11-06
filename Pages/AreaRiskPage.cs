@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ResQ.Pages
 {
@@ -31,6 +32,7 @@ namespace ResQ.Pages
                 WalkthroughUi.ClearCopies(flowRisks, pnlRiskTemplate);
                 foreach (DataRow row in rows.Rows)
                 {
+                    
                     var card = WalkthroughUi.CopyCard(pnlRiskTemplate);
                     string area = row["Area"].ToString()!;
                     string risk = row["RiskLevel"].ToString()!;

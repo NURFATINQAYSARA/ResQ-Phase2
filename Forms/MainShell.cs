@@ -139,8 +139,11 @@ namespace ResQ
         // Temporary page: teammates replace each menu item with their real page.
         private void ShowPlaceholder(string label)
         {
+            
             pnlBody.Controls.Clear();
             var page = new PageBase();
+            page.Dock = DockStyle.Fill;
+
             var title = Theme.Title(label);
             title.Location = new Point(24, 24);
             page.Controls.Add(title);
@@ -149,12 +152,25 @@ namespace ResQ
             page.Controls.Add(note);
             pnlBody.Controls.Add(page);
         }
+
+        private void InitializeComponent()
+        {
+            SuspendLayout();
+            // 
+            // MainShell
+            // 
+            ClientSize = new Size(1283, 752);
+            Name = "MainShell";
+            ResumeLayout(false);
+
+        }
+
         private void btnAreaRisk_Click(object sender, EventArgs e)
         {
             pnlBody.Controls.Clear();
-            var areaRiskPage = new AreaRiskPage();
-            pnlBody.Controls.Add(areaRiskPage);
-            areaRiskPage.Dock = DockStyle.Fill;
+            var directoryPage = new DirectoryPage();
+            directoryPage.Dock = DockStyle.Fill; // <--- Forces it to stretch
+            pnlBody.Controls.Add(directoryPage);
         }
     }
 }
