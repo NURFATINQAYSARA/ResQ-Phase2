@@ -16,6 +16,7 @@ namespace ResQ
             ClientSize = new Size(1140, 720);
             MinimumSize = new Size(1000, 620);
             StartPosition = FormStartPosition.CenterScreen;
+            pnlSide.Width = 240;
             BackColor = Theme.Background;
             pnlSide.BackColor = Theme.SidebarColor(Session.Role);
             pnlBody.BackColor = Theme.Background;
@@ -65,7 +66,7 @@ namespace ResQ
                     Text = label,
                     Left = 12,
                     Top = y,
-                    Width = 196,
+                    Width = pnlSide.Width - 24, // Automatically leaves 12px margin on left and right
                     Height = 42,
                     FlatStyle = FlatStyle.Flat,
                     BackColor = pnlSide.BackColor,
@@ -92,16 +93,30 @@ namespace ResQ
             logout.Click += (_, _) => { Session.End(); Close(); };
             pnlSide.Controls.Add(logout);
         }
+
+        private void InitializeComponent()
+        {
+            SuspendLayout();
+            // 
+            // MainShell
+            // 
+            ClientSize = new Size(278, 244);
+            Name = "MainShell";
+            Load += MainShell_Load;
+            ResumeLayout(false);
+
+        }
+
         private void Navigate(string label)
         {
             // Only menu destinations for the current role are accepted.
             if (!MenuLabels().Contains(label)) return;
             string? name = label switch
             {
-            "Home" => Session.Role == "Admin" ? "AdminHomePage" : "ResidentHomePage",
-            "Submit Request" => "SubmitRequestPage",
-            "My Requests" => "MyRequestsPage",
-            "Request Feed" => "RequestFeedPage",
+                "Home" => Session.Role == "Admin" ? "AdminHomePage" : "ResidentHomePage",
+                "Submit Request" => "SubmitRequestPage",
+                "My Requests" => "MyRequestsPage",
+                "Request Feed" => "RequestFeedPage",
                 "Update Status" => "UpdateStatusPage",
                 "Area Risk" => "AreaRiskPage",
                 "Report Incident" => "ReportIncidentPage",
@@ -142,6 +157,11 @@ namespace ResQ
                 MessageBox.Show("Could not open this page. Check its build and database setup.",
                 "ResQ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void MainShell_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
