@@ -29,13 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            pnlLeft = new Panel();
             pictureBox1 = new PictureBox();
-            lblTagAdmin = new Label();
-            lblTagVolunteer = new Label();
-            lblTagResident = new Label();
-            lblTagline = new Label();
-            lblBrand = new Label();
             lblWelcome = new Label();
             lblHint = new Label();
             rdoResident = new RadioButton();
@@ -49,92 +43,21 @@
             btnRegister = new Button();
             lblNew = new Label();
             lblHelp = new Label();
-            pnlLeft.SuspendLayout();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
-            // 
-            // pnlLeft
-            // 
-            pnlLeft.BackColor = Color.FromArgb(217, 58, 43);
-            pnlLeft.Controls.Add(pictureBox1);
-            pnlLeft.Controls.Add(lblTagAdmin);
-            pnlLeft.Controls.Add(lblTagVolunteer);
-            pnlLeft.Controls.Add(lblTagResident);
-            pnlLeft.Controls.Add(lblTagline);
-            pnlLeft.Controls.Add(lblBrand);
-            pnlLeft.Dock = DockStyle.Left;
-            pnlLeft.Location = new Point(0, 0);
-            pnlLeft.Name = "pnlLeft";
-            pnlLeft.Size = new Size(504, 504);
-            pnlLeft.TabIndex = 0;
             // 
             // pictureBox1
             // 
+            pictureBox1.BackColor = Color.FromArgb(217, 58, 43);
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(56, 12);
+            pictureBox1.Location = new Point(19, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(178, 148);
+            pictureBox1.Size = new Size(132, 111);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
-            // 
-            // lblTagAdmin
-            // 
-            lblTagAdmin.BackColor = Color.White;
-            lblTagAdmin.ForeColor = Color.FromArgb(27, 31, 107);
-            lblTagAdmin.Location = new Point(56, 443);
-            lblTagAdmin.Name = "lblTagAdmin";
-            lblTagAdmin.Size = new Size(228, 37);
-            lblTagAdmin.TabIndex = 4;
-            lblTagAdmin.Text = "Administrator";
-            lblTagAdmin.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblTagVolunteer
-            // 
-            lblTagVolunteer.BackColor = Color.White;
-            lblTagVolunteer.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblTagVolunteer.ForeColor = Color.FromArgb(90, 58, 0);
-            lblTagVolunteer.Location = new Point(57, 389);
-            lblTagVolunteer.Name = "lblTagVolunteer";
-            lblTagVolunteer.Size = new Size(229, 42);
-            lblTagVolunteer.TabIndex = 3;
-            lblTagVolunteer.Text = "Community Volunteer";
-            lblTagVolunteer.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblTagResident
-            // 
-            lblTagResident.BackColor = Color.White;
-            lblTagResident.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblTagResident.ForeColor = Color.FromArgb(217, 58, 43);
-            lblTagResident.Location = new Point(56, 336);
-            lblTagResident.Name = "lblTagResident";
-            lblTagResident.Size = new Size(229, 40);
-            lblTagResident.TabIndex = 2;
-            lblTagResident.Text = "Resident";
-            lblTagResident.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblTagline
-            // 
-            lblTagline.BackColor = Color.Transparent;
-            lblTagline.Font = new Font("Segoe UI", 13F);
-            lblTagline.ForeColor = Color.White;
-            lblTagline.Location = new Point(57, 236);
-            lblTagline.Name = "lblTagline";
-            lblTagline.Size = new Size(408, 90);
-            lblTagline.TabIndex = 1;
-            lblTagline.Text = "Community Emergency Response and Support Application";
-            // 
-            // lblBrand
-            // 
-            lblBrand.AutoSize = true;
-            lblBrand.BackColor = Color.Transparent;
-            lblBrand.Font = new Font("Segoe UI", 40F, FontStyle.Bold);
-            lblBrand.ForeColor = Color.White;
-            lblBrand.Location = new Point(40, 138);
-            lblBrand.Name = "lblBrand";
-            lblBrand.Size = new Size(234, 106);
-            lblBrand.TabIndex = 0;
-            lblBrand.Text = "ResQ";
             // 
             // lblWelcome
             // 
@@ -142,7 +65,7 @@
             lblWelcome.BackColor = Color.Transparent;
             lblWelcome.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblWelcome.ForeColor = Color.FromArgb(20, 26, 70);
-            lblWelcome.Location = new Point(508, 9);
+            lblWelcome.Location = new Point(433, 9);
             lblWelcome.Name = "lblWelcome";
             lblWelcome.Size = new Size(296, 54);
             lblWelcome.TabIndex = 6;
@@ -153,7 +76,7 @@
             lblHint.AutoSize = true;
             lblHint.BackColor = Color.Transparent;
             lblHint.ForeColor = Color.FromArgb(61, 68, 104);
-            lblHint.Location = new Point(516, 58);
+            lblHint.Location = new Point(442, 58);
             lblHint.Name = "lblHint";
             lblHint.Size = new Size(291, 28);
             lblHint.TabIndex = 7;
@@ -164,7 +87,7 @@
             rdoResident.Appearance = Appearance.Button;
             rdoResident.AutoSize = true;
             rdoResident.Checked = true;
-            rdoResident.Location = new Point(524, 106);
+            rdoResident.Location = new Point(448, 106);
             rdoResident.Name = "rdoResident";
             rdoResident.Size = new Size(104, 38);
             rdoResident.TabIndex = 8;
@@ -176,7 +99,7 @@
             // rdoVolunteer
             // 
             rdoVolunteer.Appearance = Appearance.Button;
-            rdoVolunteer.Location = new Point(650, 106);
+            rdoVolunteer.Location = new Point(576, 106);
             rdoVolunteer.Name = "rdoVolunteer";
             rdoVolunteer.Size = new Size(131, 44);
             rdoVolunteer.TabIndex = 8;
@@ -187,7 +110,7 @@
             // rdoAdmin
             // 
             rdoAdmin.Appearance = Appearance.Button;
-            rdoAdmin.Location = new Point(804, 107);
+            rdoAdmin.Location = new Point(728, 106);
             rdoAdmin.Name = "rdoAdmin";
             rdoAdmin.Size = new Size(126, 44);
             rdoAdmin.TabIndex = 8;
@@ -198,7 +121,7 @@
             // lblUsername
             // 
             lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(524, 155);
+            lblUsername.Location = new Point(448, 155);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(106, 28);
             lblUsername.TabIndex = 9;
@@ -207,7 +130,7 @@
             // txtUsername
             // 
             txtUsername.Font = new Font("Segoe UI", 11F);
-            txtUsername.Location = new Point(522, 186);
+            txtUsername.Location = new Point(446, 186);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(408, 37);
             txtUsername.TabIndex = 10;
@@ -215,7 +138,7 @@
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(522, 236);
+            lblPassword.Location = new Point(446, 236);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(101, 28);
             lblPassword.TabIndex = 11;
@@ -224,7 +147,7 @@
             // txtPassword
             // 
             txtPassword.Font = new Font("Segoe UI", 11F);
-            txtPassword.Location = new Point(524, 267);
+            txtPassword.Location = new Point(448, 267);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(408, 37);
             txtPassword.TabIndex = 12;
@@ -232,7 +155,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(524, 327);
+            btnLogin.Location = new Point(448, 327);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(408, 38);
             btnLogin.TabIndex = 13;
@@ -242,7 +165,7 @@
             // 
             // btnRegister
             // 
-            btnRegister.Location = new Point(524, 401);
+            btnRegister.Location = new Point(448, 401);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(408, 40);
             btnRegister.TabIndex = 14;
@@ -254,7 +177,7 @@
             // 
             lblNew.AutoSize = true;
             lblNew.Font = new Font("Segoe UI", 10F);
-            lblNew.Location = new Point(661, 366);
+            lblNew.Location = new Point(585, 366);
             lblNew.Name = "lblNew";
             lblNew.Size = new Size(133, 28);
             lblNew.TabIndex = 15;
@@ -264,18 +187,30 @@
             // 
             lblHelp.Font = new Font("Segoe UI", 9F);
             lblHelp.ForeColor = Color.FromArgb(61, 68, 104);
-            lblHelp.Location = new Point(508, 441);
+            lblHelp.Location = new Point(432, 441);
             lblHelp.Name = "lblHelp";
             lblHelp.Size = new Size(448, 53);
             lblHelp.TabIndex = 16;
             lblHelp.Text = "Need help using the computer? A family member, \r\nneighbour or volunteer can assist you.";
             lblHelp.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.Screenshot_2026_11_07_032256;
+            pictureBox2.Location = new Point(0, -21);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(393, 541);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 17;
+            pictureBox2.TabStop = false;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(12F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(960, 504);
+            ClientSize = new Size(914, 504);
+            Controls.Add(pictureBox1);
+            Controls.Add(pictureBox2);
             Controls.Add(lblHelp);
             Controls.Add(lblNew);
             Controls.Add(btnRegister);
@@ -289,28 +224,20 @@
             Controls.Add(rdoResident);
             Controls.Add(lblHint);
             Controls.Add(lblWelcome);
-            Controls.Add(pnlLeft);
             Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ResQ - Login";
-            pnlLeft.ResumeLayout(false);
-            pnlLeft.PerformLayout();
+            Load += LoginForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Panel pnlLeft;
-        private Label lblBrand;
-        private Label lblTagline;
-        private Label lblTagAdmin;
-        private Label lblTagVolunteer;
-        private Label lblTagResident;
         private PictureBox pictureBox1;
         private Label lblWelcome;
         private Label lblHint;
@@ -325,5 +252,6 @@
         private Button btnRegister;
         private Label lblNew;
         private Label lblHelp;
+        private PictureBox pictureBox2;
     }
 }

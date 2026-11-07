@@ -10,9 +10,8 @@ namespace ResQ.Forms
         {
             InitializeComponent();
 
-            pnlLeft.BackColor = Theme.Red;
-            Theme.StylePrimary(btnLogin);
-            Theme.StyleSecondary(btnRegister);
+            Theme.StylePrimary(this.btnLogin);
+            Theme.StyleSecondary(this.btnRegister);
 
             AcceptButton = btnLogin;
 
@@ -136,5 +135,10 @@ namespace ResQ.Forms
                 "ResQ",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

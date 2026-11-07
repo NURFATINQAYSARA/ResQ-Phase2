@@ -49,13 +49,24 @@ namespace ResQ
         };
         private void BuildSide()
         {
+            pnlSide.Controls.Add(new PictureBox
+            {
+                Name = "picSidebarLogo",
+                Image = Properties.Resources.ResQLogo,
+                SizeMode = PictureBoxSizeMode.Zoom,
+                Size = new Size(64, 64),
+                Location = new Point(12, 16),
+                BackColor = Color.Transparent,
+                TabStop = false
+            });
+
             pnlSide.Controls.Add(new Label
             {
                 Text = "ResQ",
                 AutoSize = true,
                 Font = new Font("Segoe UI", 22, FontStyle.Bold),
                 ForeColor = Color.White,
-                Location = new Point(18, 20)
+                Location = new Point(84, 20)
             });
             int y = 90;
             foreach (string label in MenuLabels())
@@ -67,7 +78,10 @@ namespace ResQ
                     Left = 12,
                     Top = y,
                     Width = pnlSide.Width - 24, // Automatically leaves 12px margin on left and right
-                    Height = 42,
+                    Height = Math.Max(42, TextRenderer.MeasureText(
+                    label, Theme.FontBold,
+                    new Size(pnlSide.Width - 48, int.MaxValue),
+                    TextFormatFlags.WordBreak).Height + 12),
                     FlatStyle = FlatStyle.Flat,
                     BackColor = pnlSide.BackColor,
                     ForeColor = Color.White,
@@ -78,7 +92,8 @@ namespace ResQ
                 button.FlatAppearance.BorderSize = 0;
                 button.Click += (_, _) => Navigate(destination);
                 pnlSide.Controls.Add(button);
-                y += 46;
+                y += button.Height + 4;
+
             }
             var logout = new Button
             {

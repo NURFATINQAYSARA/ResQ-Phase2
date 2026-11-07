@@ -117,9 +117,9 @@
             lblStatus.AutoEllipsis = true;
             lblStatus.BackColor = Color.FromArgb(241, 242, 248);
             lblStatus.ForeColor = Color.FromArgb(20, 26, 70);
-            lblStatus.Location = new Point(24, 885);
+            lblStatus.Location = new Point(24, 1925);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(1111, 30);
+            lblStatus.Size = new Size(1124, 30);
             lblStatus.TabIndex = 3;
             lblStatus.Text = "clear it so it’s empty";
             // 
@@ -335,23 +335,23 @@
             // 
             // lblPendingRequest
             // 
-            lblPendingRequest.AutoSize = true;
             lblPendingRequest.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblPendingRequest.Location = new Point(18, 209);
+            lblPendingRequest.Location = new Point(18, 197);
             lblPendingRequest.Name = "lblPendingRequest";
-            lblPendingRequest.Size = new Size(289, 25);
+            lblPendingRequest.Size = new Size(320, 56);
             lblPendingRequest.TabIndex = 6;
             lblPendingRequest.Text = "Pending requests need attention";
+            lblPendingRequest.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblVolunteers
             // 
-            lblVolunteers.AutoSize = true;
             lblVolunteers.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblVolunteers.Location = new Point(18, 144);
+            lblVolunteers.Location = new Point(18, 131);
             lblVolunteers.Name = "lblVolunteers";
-            lblVolunteers.Size = new Size(324, 25);
+            lblVolunteers.Size = new Size(320, 56);
             lblVolunteers.TabIndex = 5;
             lblVolunteers.Text = "Volunteer accounts waiting approval";
+            lblVolunteers.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // btnOpen
             // 
@@ -394,13 +394,13 @@
             // 
             // lblIncidents
             // 
-            lblIncidents.AutoSize = true;
             lblIncidents.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            lblIncidents.Location = new Point(18, 76);
+            lblIncidents.Location = new Point(18, 65);
             lblIncidents.Name = "lblIncidents";
-            lblIncidents.Size = new Size(247, 25);
+            lblIncidents.Size = new Size(320, 56);
             lblIncidents.TabIndex = 1;
             lblIncidents.Text = "Pending incidents to review";
+            lblIncidents.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblAttentionTitle
             // 
@@ -440,7 +440,7 @@
             pnlAreaTemplate.Location = new Point(0, 0);
             pnlAreaTemplate.Margin = new Padding(0, 0, 0, 8);
             pnlAreaTemplate.Name = "pnlAreaTemplate";
-            pnlAreaTemplate.Size = new Size(264, 46);
+            pnlAreaTemplate.Size = new Size(306, 46);
             pnlAreaTemplate.TabIndex = 0;
             // 
             // lblAreaBadge
@@ -448,7 +448,7 @@
             lblAreaBadge.AutoSize = true;
             lblAreaBadge.BackColor = Color.FromArgb(248, 215, 211);
             lblAreaBadge.ForeColor = Color.FromArgb(143, 29, 23);
-            lblAreaBadge.Location = new Point(164, 8);
+            lblAreaBadge.Location = new Point(209, 8);
             lblAreaBadge.Name = "lblAreaBadge";
             lblAreaBadge.Size = new Size(54, 28);
             lblAreaBadge.TabIndex = 1;
@@ -457,10 +457,9 @@
             // 
             // lblAreaName
             // 
-            lblAreaName.AutoSize = true;
             lblAreaName.Location = new Point(8, 8);
             lblAreaName.Name = "lblAreaName";
-            lblAreaName.Size = new Size(105, 28);
+            lblAreaName.Size = new Size(141, 28);
             lblAreaName.TabIndex = 0;
             lblAreaName.Text = "Area name";
             // 
@@ -492,7 +491,7 @@
             ForeColor = Color.FromArgb(20, 26, 70);
             Location = new Point(24, 236);
             Name = "AdminHomePage";
-            Size = new Size(1087, 566);
+            Size = new Size(1100, 531);
             pnlPending.ResumeLayout(false);
             pnlAccepted.ResumeLayout(false);
             pnlProgress.ResumeLayout(false);

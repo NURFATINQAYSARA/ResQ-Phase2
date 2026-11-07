@@ -15,6 +15,7 @@ namespace ResQ.Pages
         {
             InitializeComponent();
             Theme.StyleSecondary(btnRefresh);
+            flowAreas.SizeChanged += (s, e) => ResizeAreaCards();
             btnRefresh.Click += (s, e) => LoadData();
             LoadData();
         }
@@ -57,7 +58,22 @@ namespace ResQ.Pages
 
             foreach (var row in rows)
                 flowAreas.Controls.Add(BuildAreaCard(row.Area, row.Level, row.Note));
+
+            ResizeAreaCards();
         }
+
+        private void ResizeAreaCards()
+        {
+            flowAreas.SuspendLayout();
+            flowAreas.AutoScroll = false;
+            foreach (Panel card in flowAreas.Controls.OfType<Panel>())
+                card.Width = Math.Max(card.MinimumSize.Width,
+                    flowAreas.Width -
+                    SystemInformation.VerticalScrollBarWidth - 8);
+            flowAreas.AutoScroll = true;
+            flowAreas.ResumeLayout(true);
+        }
+
 
         // One editable card per area: name + 3 radios + note textbox + Save.
         private Panel BuildAreaCard(string area, string currentLevel, string currentNote)
@@ -163,7 +179,29 @@ namespace ResQ.Pages
             card.Controls.Add(lblNote);
             card.Controls.Add(txtNote);
             card.Controls.Add(btnSave);
+            // Use actual font widths instead of guessed horizontal positions.
+            rdoMedium.Left = rdoLow.Right + 16;
+            rdoHigh.Left = rdoMedium.Right + 16;
+            lblNote.Left = rdoHigh.Right + 24;
+            txtNote.Left = lblNote.Right + 12;
+            card.MinimumSize = new Size(
+                txtNote.Left + 120 + 16 + btnSave.Width + 16, 110);
+
+            void LayoutCard()
+            {
+                btnSave.Left = card.ClientSize.Width - btnSave.Width - 16;
+                txtNote.Width = btnSave.Left - txtNote.Left - 16;
+            }
+            card.SizeChanged += (s, e) => LayoutCard();
+            LayoutCard();
+
+
             return card;
+        }
+
+        private void SetRiskLevelsPage_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
